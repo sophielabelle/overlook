@@ -1,3 +1,85 @@
+* {
+  /* border: 2px solid salmon; */
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  margin: 0;
+  height: 100vh;
+  width: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  height: 100%;
+  width: 100%;
+  background: rgb(34 30 41);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Nav Bar */
+nav {
+  height: 100px;
+  width: 100vw;
+  position: fixed;
+  background: linear-gradient(0.25turn, rgb(38 42 60) 0%, rgb(136 93 102) 100%);
+  top: 0;
+}
+
+h1 {
+  font-size: 3em ;
+  color: white;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav-btns {
+  margin-right: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.nav-btn {
+  background: none;
+  color: white;
+  border: none;
+  font-size: large;
+}
+
+.nav-btn:hover {
+  color: black;
+  cursor: pointer;
+}
+
+/* Login Page */
+
+
+/* Booking Page */
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vw;
+  border-radius: 5px;
+  background-color: #634f5e;
+}
+
+.calendar > input {
+  color: black
+}
+.calendar > input:hover {
+  cursor: pointer;
 }
