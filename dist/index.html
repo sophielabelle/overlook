@@ -42,17 +42,59 @@
     <section id="bookingDashboard">
       <section class="booking-bar" id="bookingBar">
         <div class="calendar">
+          <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
           <label for="bookingDate">
             <button class="nav-btns">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
           </label>
-          <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
         </div>
-        <div class="room-options">
+        <div class="room-radio-container" id="radioBtns">
+          <div class="radio">
+            <h2>Filter Room Types:</h2>
+            <label for="resSuite">
+              <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
+              Residential Suite
+            </label>
+            <label for="juniorSuit">
+              <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
+              Junior Suite
+            </label>
+            <label for="suite">
+              <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
+              Suite
+            </label>
+            <label for="single">
+              <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
+              Single
+            </label>
+          </div>
+          <div class="radio">
+            <h2>Filter by Bed:</h2>
+            <label for="king">
+              <input class="radio-dials" type="radio" id="kind" name="filter-beds" value="King Bed">
+              King
+            </label>
+            <label for="queen">
+              <input class="radio-dials" type="radio" id="queen" name="filter-beds" value="Queen Bed">
+              Queen
+            </label>
+            <label for="full">
+              <input class="radio-dials" type="radio" id="full" name="filter-beds" value="Full Bed">
+              Full
+            </label>
+            <label for="twin">
+              <input class="radio-dials" type="radio" id="twin" name="filter-beds" value="Twin">
+              Twin
+            </label>
+          </div>
+          <div class="nav-btns filter-btn">
+            <button class="nav-btn">FILTER</button>
+            <span class="material-symbols-outlined">search</span>
+          </div>
         </div>
       </section>
       <section class="available-rooms-disp">
-        <h2>Available Room</h2>
-        <div class="rooms">
+        <h2>Available Rooms</h2>
+        <div class="room">
           <h3>Room Name</h3>
           <img src="./images/turing-logo.png" alt="turing logo">
         </div>
