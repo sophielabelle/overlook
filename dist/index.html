@@ -4,13 +4,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Hotel de Las Flores</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <head>
+    <nav>
+      <H1>Hotel de Las Flores</H1>
+      <div class="nav-btns">
+        <button class="nav-btn" id="homeBtn">HOME</button>
+        <button class="nav-btn" id="searchBtn">SEARCH</button>
+        <button class="nav-btn" id="bookingsBtn">MY BOOKINGS</button>
+        <button class="nav-btn" id="dashboardBtn">DASHBOARD</button>
+      </div>
+    </nav>
+  </head>
+  <main>
+    <section class="login hidden" id="loginPage">
+      <form action=""></form>
+    </section>
+    <section class="dashboard hidden">
+      <div class="roomBookings">
+        <p>my bookings</p>
+      </div> 
+      <div class="roomBookings">
+        <p>total</p>
+      </div>
+    </section>
+    <section class="booking-page" id="mainBooking">
+      <form class="calendar">
+        <label for="bookingDate">Date:</label>
+        <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
+      </form>
+      <div>
+        <p>Available Rooms</p>
+      </div>
+    </section>
+  </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
