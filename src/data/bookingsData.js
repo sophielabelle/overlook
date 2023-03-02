@@ -18,10 +18,4 @@ const bookingsData = [
     "roomNumber": 1,
   },
 ]
-
 export default bookingsData;
-
-// make class for a hotel (like recipe repo) hotel can retrive users rooms etc
-//  class for booking
-// class for user user gets a hotel
-// class for room
