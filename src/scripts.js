@@ -1,5 +1,6 @@
 // IMPORTS -------------------------------------------------------|
 import './css/styles.css';
+import { promises } from './apiCalls';
 import './images/junior-suite.png'
 import './images/single.png'
 import './images/residential.png'
