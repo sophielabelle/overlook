@@ -22,6 +22,14 @@ const roomsData = [
     "bedSize": "king",
     "numBeds": 1,
     "costPerNight": 491.14
+  },
+  {
+    "number": 5,
+    "roomType": "single room",
+    "bidet": false,
+    "bedSize": "king",
+    "numBeds": 1,
+    "costPerNight": 491.14
   }
 ]
 
