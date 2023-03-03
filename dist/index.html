@@ -4,18 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <title>Hotel de Las Flores</title>
 </head>
 <body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   <head>
     <nav>
       <H1>Hotel de Las Flores</H1>
-      <div class="nav-btns">
-        <button class="nav-btn" id="homeBtn">HOME</button>
-        <button class="nav-btn" id="searchBtn">SEARCH</button>
-        <button class="nav-btn" id="bookingsBtn">MY BOOKINGS</button>
-        <button class="nav-btn" id="dashboardBtn">DASHBOARD</button>
+      <div class="nav-conatiner">
+        <div class="nav-btns">
+          <span class="material-symbols-outlined">home</span>
+          <button class="nav-btn" id="homeBtn">HOME</button>
+        </div>
+        <div class="nav-btns">
+          <span class="material-symbols-outlined">account_circle</span>
+          <button class="nav-btn" id="bookingsBtn">MY BOOKINGS</button>
+        </div>
+        <div class="nav-btns">
+          <span class="material-symbols-outlined">dashboard</span>
+          <button class="nav-btn" id="dashboardBtn ">DASHBOARD</button>
+        </div>
       </div>
     </nav>
   </head>
@@ -23,25 +31,131 @@
     <section class="login hidden" id="loginPage">
       <form action=""></form>
     </section>
-    <section class="dashboard hidden">
-      <div class="roomBookings">
-        <p>my bookings</p>
+    <section class="user-dashboard" id="userDashboard">
+      <div class="user-details">
+        <h2>Your Bookings</h2>
+        <p>Total Spent: <span>$7700</span></p>
       </div> 
-      <div class="roomBookings">
-        <p>total</p>
-      </div>
+      <section class="user-bookings" id="userBookings">
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>  
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>  
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <div class="details">
+            <p>numBeds</p>
+            <p>bedSize</p>
+            <p>bidet??</p>
+            <p>Cost per Night</p>
+          </div>
+        </div>
+      </section>
     </section>
-    <section class="booking-page" id="mainBooking">
-      <form class="calendar">
-        <label for="bookingDate">Date:</label>
-        <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
-      </form>
-      <div>
-        <p>Available Rooms</p>
-      </div>
+    <section class="hidden" id="bookingDashboard">
+      <section class="booking-bar" id="bookingBar">
+        <div class="calendar">
+          <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
+          <label for="bookingDate">
+            <button class="nav-btns">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
+          </label>
+        </div>
+        <div class="room-radio-container" id="radioBtns">
+          <div class="radio">
+            <h2>Filter Room Types:</h2>
+            <label for="resSuite">
+              <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
+              Residential Suite
+            </label>
+            <label for="juniorSuit">
+              <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
+              Junior Suite
+            </label>
+            <label for="suite">
+              <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
+              Suite
+            </label>
+            <label for="single">
+              <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
+              Single
+            </label>
+            <div class="nav-btns filter-btn">
+              <button class="nav-btn">FILTER</button>
+              <span class="material-symbols-outlined">search</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="available-rooms-disp">
+        <h2>Available Rooms</h2>
+        <div class="room">
+          <h3>Room Name</h3>
+          <img src="./images/turing-logo.png" alt="turing logo">
+        </div>
+      </section>
     </section>
   </main>
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>
 </html>
