@@ -10,7 +10,6 @@ const fetchData = (info) => {
   .catch(error => console.log(`Issue at: ${error}`))
 }
 
-
 const resolveData = () => {
   return Promise.all([
     fetchData('customers'), fetchData('rooms'), fetchData('bookings')
@@ -34,4 +33,4 @@ const postData = (saveData) => {
   .catch(err => console.log(`Issue at: ${err}`));
 }
 
-export {fetchData, resolveData, postData};
+export {resolveData, postData};

@@ -1,10 +1,14 @@
 // IMPORTS -------------------------------------------------------|
 import './css/styles.css';
-import {fetchData, resolveData, postData} from './apiCalls';
+import {resolveData, postData} from './apiCalls';
 import './images/junior-suite.png'
 import './images/single.png'
 import './images/residential.png'
 import './images/suite.png'
+import Customer from './classes/customer';
+import Room from './classes/room';
+import Booking from './classes/Booking';
+import Hotel from './classes/Hotel';
 
 
 // QUERRY SELECTORS ----------------------------------------------|
@@ -21,13 +25,17 @@ const dashboardBtn = document.getElementById('dashboardBtn');
 
 
 // GLOBAL VARIABLES ----------------------------------------------|
-let hotel, customer, customers, rooms, bookings;
+let hotel, customers, rooms, bookings;
 
 // EVENT LISTENERS -----------------------------------------------|
 window.addEventListener('load', () => {
   resolveData().then(
     data => {
-      customers = data[0].customers.forEach(customer  =>  );
+      console.log(data)
+      customers = data[0].customers.forEach(c  =>  new Customer(c));
+      rooms = data[0].rooms.forEach(r => new Room(r));
+      bookings = data[0].bookings.forEach(b => new Booking(b));
+      hotel = new Hotel(bookings, customers, rooms);
     }
   )
 })

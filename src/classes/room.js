@@ -5,7 +5,7 @@ class Room {
     this.bidet = roomData.bidet;
     this.bedSize = roomData.bedSize;
     this.beds = roomData.numBeds;
-    this.cost = roomData.costPerNight
+    this.cost = roomData.costPerNight;
   }
 }
 
