@@ -1,11 +1,45 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+// IMPORTS -------------------------------------------------------|
 import './css/styles.css';
+import './images/junior-suite.png'
+import './images/single.png'
+import './images/residential.png'
+import './images/suite.png'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// QUERRY SELECTORS ----------------------------------------------|
+// userDashboard 
+const userDashboard = document.querySelector('#userDashboard');
+const userBookings = document.querySelector('#userBookings');
+
+// 
+
+// EVENT LISTENERS -----------------------------------------------|
+
+// EVENT HANDLERS ------------------------------------------------| 
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+// FUNCTIONS -----------------------------------------------------| 
+function displayCustomerBookings(array, element) {
+  for(let i = 0; i < array.length; i++) {
+    element.innerHTML += 
+    `<div class="single-booking">
+      <img src="" alt="">
+      <h3>Room number - Room Type</h3>
+      <p>Cost per Night</p>
+      <div>
+        <p>numBeds</p>
+        <p>bedSize</p>
+        <p>bidet??</p>
+      </div>
+    </div>`;
+  }
+}
+
+// HELPER FUNCTIONS ----------------------------------------------| 
+const show = (array) => {
+  return array.map(elem => elem.classlist.remove('hidden'));
+}
+
+const hide = (array) => {
+  return array.map(elem => elem.classlist.add('hidden'));
+}
