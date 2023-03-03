@@ -27,8 +27,17 @@ describe('Hotel', () => {
     assert.deepEqual(hotel.allRooms, roomsData);
   })
 
-  it.skip('should have be able to retrieve open rooms', () => {
+  it('should have be able to retrieve open rooms', () => {
+    hotel.retrieveOpenRoomData("2022/01/24")
+    const rooms = [2,1];
+    assert.deepEqual(hotel.bookedRoomsOnDate, rooms);
+
+    const availRooms = [roomsData[2], roomsData[3]];
     assert.deepEqual(hotel.openRooms, availRooms);
+  })
+
+  it('should be able to retrieve all a customers rooms', () => {
+    
   })
 
   it.skip('should be able to add a room to booked rooms', () => {
