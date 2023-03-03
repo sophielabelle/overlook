@@ -31,15 +31,89 @@
     <section class="login hidden" id="loginPage">
       <form action=""></form>
     </section>
-    <section class="dashboard hidden">
-      <div class="roomBookings">
-        <p>My Bookings</p>
+    <section class="user-dashboard" id="userDashboard">
+      <div class="user-details">
+        <h2>Your Bookings</h2>
+        <p>Total Spent: <span>$7700</span></p>
       </div> 
-      <div class="roomBookings">
-        <p>total spent</p>
-      </div>
+      <section class="user-bookings" id="userBookings">
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>  
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>  
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <p>numBeds</p>
+          <p>bedSize</p>
+          <p>bidet??</p>
+          <p>Cost per Night</p>
+        </div>
+        <div class="single-booking">
+          <img src="" alt="">
+          <h3>Room number - Room Type</h3>
+          <div class="details">
+            <p>numBeds</p>
+            <p>bedSize</p>
+            <p>bidet??</p>
+            <p>Cost per Night</p>
+          </div>
+        </div>
+      </section>
     </section>
-    <section id="bookingDashboard">
+    <section class="hidden" id="bookingDashboard">
       <section class="booking-bar" id="bookingBar">
         <div class="calendar">
           <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
@@ -66,29 +140,10 @@
               <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
               Single
             </label>
-          </div>
-          <div class="radio">
-            <h2>Filter by Bed:</h2>
-            <label for="king">
-              <input class="radio-dials" type="radio" id="kind" name="filter-beds" value="King Bed">
-              King
-            </label>
-            <label for="queen">
-              <input class="radio-dials" type="radio" id="queen" name="filter-beds" value="Queen Bed">
-              Queen
-            </label>
-            <label for="full">
-              <input class="radio-dials" type="radio" id="full" name="filter-beds" value="Full Bed">
-              Full
-            </label>
-            <label for="twin">
-              <input class="radio-dials" type="radio" id="twin" name="filter-beds" value="Twin">
-              Twin
-            </label>
-          </div>
-          <div class="nav-btns filter-btn">
-            <button class="nav-btn">FILTER</button>
-            <span class="material-symbols-outlined">search</span>
+            <div class="nav-btns filter-btn">
+              <button class="nav-btn">FILTER</button>
+              <span class="material-symbols-outlined">search</span>
+            </div>
           </div>
         </div>
       </section>
