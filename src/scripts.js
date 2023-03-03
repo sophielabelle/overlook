@@ -1,19 +1,37 @@
 // IMPORTS -------------------------------------------------------|
 import './css/styles.css';
-import { promises } from './apiCalls';
+import {fetchData, resolveData, postData} from './apiCalls';
 import './images/junior-suite.png'
 import './images/single.png'
 import './images/residential.png'
 import './images/suite.png'
 
-// QUERRY SELECTORS ----------------------------------------------|
-// userDashboard 
-const userDashboard = document.querySelector('#userDashboard');
-const userBookings = document.querySelector('#userBookings');
 
-// 
+// QUERRY SELECTORS ----------------------------------------------|
+const loginPageDisplay  = document.getElementById('loginPage');
+const userDashboardDisplay = document.getElementById('userDashboard');
+const userBookings = document.getElementById('userBookings');
+const bookingPageDisplay = document.getElementById('bookingDashboard');
+
+
+// buttons
+const homeBtn = document.getElementById('homeBtn');
+const bookingsBtn = document.getElementById('bookingsBtn');
+const dashboardBtn = document.getElementById('dashboardBtn');
+
+
+// GLOBAL VARIABLES ----------------------------------------------|
+let hotel, customer, customers, rooms, bookings;
 
 // EVENT LISTENERS -----------------------------------------------|
+window.addEventListener('load', () => {
+  resolveData().then(
+    data => {
+      customers = data[0].customers.forEach(customer  =>  );
+    }
+  )
+})
+
 
 // EVENT HANDLERS ------------------------------------------------| 
 
@@ -37,10 +55,5 @@ function displayCustomerBookings(array, element) {
 }
 
 // HELPER FUNCTIONS ----------------------------------------------| 
-const show = (array) => {
-  return array.map(elem => elem.classlist.remove('hidden'));
-}
-
-const hide = (array) => {
-  return array.map(elem => elem.classlist.add('hidden'));
-}
+const show = (array) => array.map(elem => elem.classlist.remove('hidden'));
+const hide = (array) => array.map(elem => elem.classlist.add('hidden'));

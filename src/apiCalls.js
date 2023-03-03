@@ -1,18 +1,23 @@
 const fetchData = (info) => {
   return fetch(`http://localhost:3001/api/v1/${info}`)
-  .then(res => res.json())
+  .then(res => {
+    if(res.ok) {
+      return res.json()
+    } else {
+      throw new Error('Error');
+    }
+  })
   .catch(error => console.log(`Issue at: ${error}`))
-};
-
-
-export const promises = () => {
-  const customers = fetchData('customers'); 
-  const rooms = fetchData('rooms');
-  const bookings = fetchData('bookings');
-  return Promise.all([customers, rooms, bookings]);
 }
 
-export const postData = (saveData) => {
+
+const resolveData = () => {
+  return Promise.all([
+    fetchData('customers'), fetchData('rooms'), fetchData('bookings')
+  ]);
+}
+
+const postData = (saveData) => {
   fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
     body: JSON.stringify(savedRecipes),
@@ -26,6 +31,7 @@ export const postData = (saveData) => {
     }
     return response.json();
   })
-  .then(data = console.log(data))
-  .catch(error => console.log(`Issue at: ${error}`));
+  .catch(err => console.log(`Issue at: ${err}`));
 }
+
+export {fetchData, resolveData, postData};
