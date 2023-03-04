@@ -17,7 +17,14 @@ class Hotel {
   }
 
   retrieveCustomerBookings(customer) {
-    const findBookings = this.allBookings.filter(booking => booking.userID === customer.id);
+    const findBookings = this.allBookings.filter(booking => booking.userID === customer.id).reduce((acc, cur) => {
+      this.allRooms.forEach(room => {
+        if(room.number === cur.roomNumber) {
+          acc.push(room);
+        }
+      });
+      return acc;
+    }, []);
     return findBookings;
   }
 
