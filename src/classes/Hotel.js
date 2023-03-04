@@ -28,16 +28,12 @@ class Hotel {
     return findBookings;
   }
 
-  getTotalSpent(customer) {
-    // const 
-    this.totalSpent = this.rooms.reduce((acc, cur) => {
-      roomData.map(room => {
-        if(room.number === cur.roomNumber) {
-          acc += room.costPerNight;
-        }
-      })
-      return acc;
-    }, 0)
+  getTotalSpent(arr) {
+    const cost = arr.reduce((acc, cur) => {
+      acc += cur.cost
+      return acc
+    }, 0);
+    return cost.toFixed(2)
   }
 }
 

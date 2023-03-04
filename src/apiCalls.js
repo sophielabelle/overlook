@@ -13,7 +13,8 @@ const fetchData = (info) => {
 const resolveData = () => {
   return Promise.all([
     fetchData('customers'), fetchData('rooms'), fetchData('bookings')
-  ]);
+  ])
+  .catch(err => console.log('in resolve',err));
 }
 
 const postData = (saveData) => {
