@@ -17,20 +17,23 @@ class Hotel {
   }
 
   retrieveCustomerBookings(customer) {
-    const findBookings = this.allBookings.filter(booking => booking.userID === customer.id);
+    const findBookings = this.allBookings.filter(booking => booking.userID === customer.id).reduce((acc, cur) => {
+      this.allRooms.forEach(room => {
+        if(room.number === cur.roomNumber) {
+          acc.push(room);
+        }
+      });
+      return acc;
+    }, []);
     return findBookings;
   }
 
-  getTotalSpent(customer) {
-    // const 
-    this.totalSpent = this.rooms.reduce((acc, cur) => {
-      roomData.map(room => {
-        if(room.number === cur.roomNumber) {
-          acc += room.costPerNight;
-        }
-      })
-      return acc;
-    }, 0)
+  getTotalSpent(arr) {
+    const cost = arr.reduce((acc, cur) => {
+      acc += cur.cost
+      return acc
+    }, 0);
+    return cost.toFixed(2)
   }
 }
 

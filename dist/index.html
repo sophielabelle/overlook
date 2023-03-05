@@ -10,149 +10,75 @@
 <body>
   <head>
     <nav>
-      <H1>Hotel de Las Flores</H1>
-      <div class="nav-conatiner">
+      <h1>Hotel de Las Flores</h1>
+      <div class="nav-conatiner" id="navBtnConatiner">
         <div class="nav-btns">
-          <span class="material-symbols-outlined">home</span>
-          <button class="nav-btn" id="homeBtn">HOME</button>
+          <button class="nav-btn nav-btns" id="bookingsBtn"><span class="material-symbols-outlined">account_circle</span>MY BOOKINGS</button>
         </div>
         <div class="nav-btns">
-          <span class="material-symbols-outlined">account_circle</span>
-          <button class="nav-btn" id="bookingsBtn">MY BOOKINGS</button>
-        </div>
-        <div class="nav-btns">
-          <span class="material-symbols-outlined">dashboard</span>
-          <button class="nav-btn" id="dashboardBtn ">DASHBOARD</button>
+          <button class="nav-btn nav-btns" id="dashboardBtn "><span class="material-symbols-outlined">dashboard</span>DASHBOARD</button>
         </div>
       </div>
     </nav>
   </head>
+  <div class="hidden modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal-overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal-header">
+          <h2 class="modal-title" id="modal-1-title">Welcome! Please Log In</h2>
+        </header>
+        <section class="modal-content" id="modal-1-content">
+          <form class="modal-content animate" action="/action_page.php">
+            <div class="log-in-container">
+              <label for="uname"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="uname" required>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+              <button class="nav-btn" type="submit">Login</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
   <main>
-    <section class="login hidden" id="loginPage">
-      <form action=""></form>
+    <section class="user-dashboard hidden" id="userDashboard">
+      <div class="user-details" id="userDetails"></div> 
+      <section class="user-bookings" id="userBookings"></section>
     </section>
-    <section class="user-dashboard" id="userDashboard">
-      <div class="user-details">
-        <h2>Your Bookings</h2>
-        <p>Total Spent: <span>$7700</span></p>
-      </div> 
-      <section class="user-bookings" id="userBookings">
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>  
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>  
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <p>numBeds</p>
-          <p>bedSize</p>
-          <p>bidet??</p>
-          <p>Cost per Night</p>
-        </div>
-        <div class="single-booking">
-          <img src="" alt="">
-          <h3>Room number - Room Type</h3>
-          <div class="details">
-            <p>numBeds</p>
-            <p>bedSize</p>
-            <p>bidet??</p>
-            <p>Cost per Night</p>
-          </div>
-        </div>
-      </section>
-    </section>
-    <section class="hidden" id="bookingDashboard">
+    <section class="" id="bookingDashboard">
       <section class="booking-bar" id="bookingBar">
         <div class="calendar">
-          <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
-          <label for="bookingDate">
-            <button class="nav-btns">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
+          <h2>Room Types:</h2>
+          <input type="date" id="date" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
+          <label for="date">
+            <button class="nav-btns" id="showAvail">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
           </label>
-        </div>
-        <div class="room-radio-container" id="radioBtns">
-          <div class="radio">
-            <h2>Filter Room Types:</h2>
-            <label for="resSuite">
-              <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
-              Residential Suite
-            </label>
-            <label for="juniorSuit">
-              <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
-              Junior Suite
-            </label>
-            <label for="suite">
-              <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
-              Suite
-            </label>
-            <label for="single">
-              <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
-              Single
-            </label>
-            <div class="nav-btns filter-btn">
-              <button class="nav-btn">FILTER</button>
-              <span class="material-symbols-outlined">search</span>
+          <div class="room-radio-container" id="radioBtns">
+            <div class="radio">
+              <label for="resSuite">
+                <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
+                Residential Suite
+              </label>
+              <label for="juniorSuit">
+                <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
+                Junior Suite
+              </label>
+              <label for="suite">
+                <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
+                Suite
+              </label>
+              <label for="single">
+                <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
+                Single
+              </label>
             </div>
           </div>
         </div>
       </section>
       <section class="available-rooms-disp">
         <h2>Available Rooms</h2>
-        <div class="room">
-          <h3>Room Name</h3>
-          <img src="./images/turing-logo.png" alt="turing logo">
-        </div>
+        <div class="room-disp" id="roomDisp"></div>
       </section>
     </section>
   </main>

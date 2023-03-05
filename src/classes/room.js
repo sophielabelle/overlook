@@ -7,6 +7,10 @@ class Room {
     this.beds = roomData.numBeds;
     this.cost = roomData.costPerNight;
   }
+
+  insertImagePath() {
+    return this.type.replace(' ', '-') + '.png';
+  }
 }
 
 export default Room;
