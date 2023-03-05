@@ -9,6 +9,7 @@ import Customer from './classes/customer';
 import Room from './classes/Room';
 import Booking from './classes/Booking';
 import Hotel from './classes/Hotel';
+import MicroModal from 'micromodal';
 
 // QUERRY SELECTORS ----------------------------------------------|
 const loginPageDisplay  = document.getElementById('loginPage');
@@ -17,18 +18,19 @@ const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
 const userDetials = document.getElementById('userDetails');
 
-
 // buttons
+const navBtnContainer = document.getElementById('navBtnConatiner');
 const homeBtn = document.getElementById('homeBtn');
-const userBookingsBtn = document.getElementById('bookingsBtn');
-const dashboardBtn = document.getElementById('dashboardBtn');
+const dashBtn = document.getElementById('dashboardBtn');
 
 
 // GLOBAL VARIABLES ----------------------------------------------|
 let hotel, customers, customer, rooms, bookings;
+MicroModal.init();
 
 // EVENT LISTENERS -----------------------------------------------|
 window.addEventListener('load', () => {
+  MicroModal.show('modal-1');
   resolveData().then(
     data => {
       customers = data[0].customers.map(c => new Customer(c))
@@ -40,9 +42,15 @@ window.addEventListener('load', () => {
   )
 })
 
-userBookingsBtn.addEventListener('click', () => {
-  const findBookings = hotel.retrieveCustomerBookings(customer);
-  displayCustomerDetails(findBookings, userBookingDisplay, customer);
+navBtnContainer.addEventListener('click', (e) => {
+  console.log(e.target.id)
+  if (e.target.id === 'bookingsBtn') {
+    const findBookings = hotel.retrieveCustomerBookings(customer);
+    displayCustomerDetails(findBookings, userBookingDisplay, customer);
+  } else {
+    console.log('inside 2nd if')
+    displayBookingDashboard();
+  }
 })
 
 
@@ -62,14 +70,19 @@ const displayCustomerDetails = (a, element, cust) => {
       <h3>Room ${a[i].number} - ${a[i].type}</h3>
       <p>$${a[i].cost}</p>
       <div>
-        <p>Has a Bidet? ${a[i].bidet}</p>
-        <p>${a[i].beds} ${a[i].bedSize}</p>
+        <p>Bidet? ${a[i].bidet}, ${a[i].beds} ${a[i].bedSize}</p>
       </div>
       <figcaption class="booked-date">
         <p> Booked On:</p>
       </figcaption>
     </figure>`;
   }
+}
+
+const displayBookingDashboard = () => {
+  console.log('stuff inside function') 
+  show([bookingPageDisplay]);
+  hide([userDashboardDisplay]);
 }
 
 // HELPER FUNCTIONS ----------------------------------------------| 
