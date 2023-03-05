@@ -13,11 +13,7 @@
       <h1>Hotel de Las Flores</h1>
       <div class="nav-conatiner" id="navBtnConatiner">
         <div class="nav-btns">
-          <span class="material-symbols-outlined">home</span>
-          <button class="nav-btn" id="homeBtn">HOME</button>
-        </div>
-        <div class="nav-btns">
-          <button class="nav-btn" id="bookingsBtn"><span class="material-symbols-outlined">account_circle</span>MY BOOKINGS</button>
+          <button class="nav-btn nav-btns" id="bookingsBtn"><span class="material-symbols-outlined">account_circle</span>MY BOOKINGS</button>
         </div>
         <div class="nav-btns">
           <button class="nav-btn nav-btns" id="dashboardBtn "><span class="material-symbols-outlined">dashboard</span>DASHBOARD</button>
@@ -54,8 +50,8 @@
       <section class="booking-bar" id="bookingBar">
         <div class="calendar">
           <h2>Room Types:</h2>
-          <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
-          <label for="bookingDate">
+          <input type="date" id="date" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
+          <label for="date">
             <button class="nav-btns" id="showAvail">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
           </label>
           <div class="room-radio-container" id="radioBtns">
@@ -82,7 +78,7 @@
       </section>
       <section class="available-rooms-disp">
         <h2>Available Rooms</h2>
-        <div class="room-disp hidden" id="roomDisp"></div>
+        <div class="room-disp" id="roomDisp"></div>
       </section>
     </section>
   </main>
