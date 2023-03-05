@@ -29,7 +29,6 @@ class Hotel {
   }
 
   getTotalSpent(arr) {
-    console.log(arr)
     const cost = arr.reduce((acc, cur) => {
       acc += cur.cost
       return acc
@@ -38,8 +37,8 @@ class Hotel {
   }
 
   filterRoomType(type) {
-    const filterRooms = this.openRooms.filter(room => room.type === type);
-    console.log(filterRooms);
+    const filteredRooms = this.openRooms.filter(room => room.type === type);
+    return filteredRooms;
   }
 }
 

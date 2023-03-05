@@ -53,6 +53,13 @@ describe('Hotel', () => {
     assert.deepEqual(total, '358.40');
   });
 
+  it('should filter rooms based on their type', () => {
+    hotel.retrieveOpenRoomData("2022/03/22");
+    const filterRooms = hotel.filterRoomType('single room');
+    const rooms = [hotel.allRooms[2], hotel.allRooms[3]];
+    assert.deepEqual(filterRooms, rooms);
+  });
+
   it.skip('should be able to add a room to booked rooms', () => {
   });
 });
