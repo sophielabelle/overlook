@@ -17,11 +17,13 @@ const userDashboardDisplay = document.getElementById('userDashboard');
 const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
 const userDetials = document.getElementById('userDetails');
+const roomDisplay = document.getElementById('roomDisp')
 
 // buttons
 const navBtnContainer = document.getElementById('navBtnConatiner');
 const homeBtn = document.getElementById('homeBtn');
 const dashBtn = document.getElementById('dashboardBtn');
+const showRooms = document.getElementById('showAvail');
 
 
 // GLOBAL VARIABLES ----------------------------------------------|
@@ -53,6 +55,9 @@ navBtnContainer.addEventListener('click', (e) => {
   }
 })
 
+showRooms.addEventListener('click', () => {
+  showOpenRooms()
+})
 
 // EVENT HANDLERS ------------------------------------------------| 
 
@@ -80,9 +85,22 @@ const displayCustomerDetails = (a, element, cust) => {
 }
 
 const displayBookingDashboard = () => {
-  console.log('stuff inside function') 
   show([bookingPageDisplay]);
   hide([userDashboardDisplay]);
+}
+
+const showOpenRooms = () => {
+  show([roomDisplay])
+  hotel.retrieveOpenRoomData();
+  const rooms = hotel.openRooms;
+  console.log(rooms)
+  rooms.forEach(room => {
+    roomDisplay.innerHTML += 
+    `<div class="room">
+      <p id="${room.id}">A ${room.type} with ${room.beds} ${room.bedSize} bed. Cost: $${room.cost}</p>
+      <button class="book-btn nav-btns nav-btn" id="bookNow${room.id}">Book Now</button>
+    </div>`; 
+  });
 }
 
 // HELPER FUNCTIONS ----------------------------------------------| 
