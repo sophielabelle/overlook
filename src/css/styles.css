@@ -56,11 +56,11 @@ h1 {
 
 button {
   background: none;
-  border: none;
+  border: 1px solid transparent;
 }
 
 .nav-btns:hover {
-  border: 1px solid black;
+  border-color:black;
   border-radius: 2px;
   color: black;
   cursor: pointer;
@@ -196,10 +196,13 @@ input, select, textarea{
 
 .calendar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: fit-content;
+  align-items: center;
+  height: inherit;
+  width: inherit;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.322);
+  background: rgba(255, 255, 255, 0.115);
 }
 
 .calendar > input {
@@ -223,22 +226,39 @@ input, select, textarea{
   flex-direction: column;
   align-items: center;
   position: fixed;
+  padding: 0;
   right: 0;
   margin: 40px 30px 40px 40px;
   height: 75vh;
-  width: 60vw;
+  width: 65vw;
+}
+
+.available-rooms-disp > h2 {
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.room-disp {
+  overflow-y: scroll;
+  margin-top: 40px;
+  width: 90%
 }
 
 .room {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 2px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.115);
 }
 
-.room > img {
-  max-height: 70%;
-  max-width: 70%;
-}
+.book-btn {
+  background-color: #634f5e;
+  margin-bottom: 5px;
+} 
 
 /* Radio Filter Buttons ------------------------- */
 .radio {
@@ -260,3 +280,4 @@ input, select, textarea{
 .hidden {
   display: none;
 }
+

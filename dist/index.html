@@ -10,19 +10,17 @@
 <body>
   <head>
     <nav>
-      <H1 class="hidden">Hotel de Las Flores</H1>
+      <h1>Hotel de Las Flores</h1>
       <div class="nav-conatiner" id="navBtnConatiner">
         <div class="nav-btns">
           <span class="material-symbols-outlined">home</span>
           <button class="nav-btn" id="homeBtn">HOME</button>
         </div>
         <div class="nav-btns">
-          <span class="material-symbols-outlined">account_circle</span>
-          <button class="nav-btn" id="bookingsBtn">MY BOOKINGS</button>
+          <button class="nav-btn" id="bookingsBtn"><span class="material-symbols-outlined">account_circle</span>MY BOOKINGS</button>
         </div>
         <div class="nav-btns">
-          <span class="material-symbols-outlined">dashboard</span>
-          <button class="nav-btn" id="dashboardBtn ">DASHBOARD</button>
+          <button class="nav-btn nav-btns" id="dashboardBtn "><span class="material-symbols-outlined">dashboard</span>DASHBOARD</button>
         </div>
       </div>
     </nav>
@@ -52,45 +50,39 @@
       <div class="user-details" id="userDetails"></div> 
       <section class="user-bookings" id="userBookings"></section>
     </section>
-    <section class="hidden" id="bookingDashboard">
+    <section class="" id="bookingDashboard">
       <section class="booking-bar" id="bookingBar">
         <div class="calendar">
+          <h2>Room Types:</h2>
           <input type="date" id="bookingDate" name="booking-date" value="2023-03-01" min="2022-01-01" max="2050-01-01">
           <label for="bookingDate">
-            <button class="nav-btns">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
+            <button class="nav-btns" id="showAvail">SHOW ROOMS<span class="material-symbols-outlined">chevron_right</span></button>
           </label>
-        </div>
-        <div class="room-radio-container" id="radioBtns">
-          <div class="radio">
-            <h2>Filter Room Types:</h2>
-            <label for="resSuite">
-              <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
-              Residential Suite
-            </label>
-            <label for="juniorSuit">
-              <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
-              Junior Suite
-            </label>
-            <label for="suite">
-              <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
-              Suite
-            </label>
-            <label for="single">
-              <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
-              Single
-            </label>
-            <div class="nav-btns filter-btn">
-              <button class="nav-btn">FILTER</button>
-              <span class="material-symbols-outlined">search</span>
+          <div class="room-radio-container" id="radioBtns">
+            <div class="radio">
+              <label for="resSuite">
+                <input class="radio-dials" type="radio" id="resSuite" name="filter-room-type" value="Residential Suite">
+                Residential Suite
+              </label>
+              <label for="juniorSuit">
+                <input class="radio-dials" type="radio" id="juniorSuit" name="filter-room-type" value="Junior Suit">
+                Junior Suite
+              </label>
+              <label for="suite">
+                <input class="radio-dials" type="radio" id="suite" name="filter-room-type" value="Suite">
+                Suite
+              </label>
+              <label for="single">
+                <input class="radio-dials" type="radio" id="single" name="filter-room-type" value="Single">
+                Single
+              </label>
             </div>
           </div>
         </div>
       </section>
       <section class="available-rooms-disp">
         <h2>Available Rooms</h2>
-        <div class="room">
-          <h3>Room Name</h3>
-        </div>
+        <div class="room-disp hidden" id="roomDisp"></div>
       </section>
     </section>
   </main>
