@@ -61,12 +61,7 @@ roomDisplay.addEventListener('click', (e) => {
   }
 })
 
-// EVENT HANDLERS ------------------------------------------------| 
-
-
-
 // FUNCTIONS -----------------------------------------------------|
-
 const resolve = () => {
   resolveData().then(
     data => {
@@ -138,8 +133,10 @@ const displayRooms = (elem, arr) => {
 }
 
 const bookRoom = (e) => {
-  const sepId = e.target.id.split('bookNow',)[1];
-  console.log(sepId)
+  const id = parseInt(e.target.id.split('bookNow',)[1]);
+  const newPosting = hotel.bookNewRoom(customer.id, dateInput, id);
+  console.log(newPosting)
+  postData(newPosting);
   // go into hotel class and use book method
 }
 

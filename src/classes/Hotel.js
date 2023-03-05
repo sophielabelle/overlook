@@ -13,7 +13,12 @@ class Hotel {
     this.openRooms = this.allRooms.filter(room => !this.bookedRoomsOnDate.includes(room.number));
   }
 
-  bookNewRoom(book) {
+  bookNewRoom(id, date, num) {
+    const postingObj = { "userID": id,
+    "date": date,
+    "roomNumber": num
+    }
+    return postingObj;
   }
 
   retrieveCustomerBookings(customer) {

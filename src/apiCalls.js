@@ -18,9 +18,10 @@ const resolveData = () => {
 }
 
 const postData = (saveData) => {
+  console.log(saveData)
   fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
-    body: JSON.stringify(savedRecipes),
+    body: JSON.stringify(saveData),
     headers: {
       'Content-Type': 'application/json'
     }  
@@ -31,7 +32,7 @@ const postData = (saveData) => {
     }
     return response.json();
   })
-  .catch(err => console.log(`Issue at: ${err}`));
+  .catch(err => handleError);
 }
 
 export {resolveData, postData};
