@@ -8,7 +8,7 @@ import Customer from '../src/classes/customer';
 import Room from '../src/classes/Room';
 
 describe('Hotel', () => {
-  let hotel, customer, findBooking, bData, cData, rData;
+  let hotel, customer, findBooking, bData, cData, rData, sepRooms;
 
   beforeEach(() => {
     bData = bookingsData.map(b => new Booking(b));
@@ -17,6 +17,7 @@ describe('Hotel', () => {
     hotel = new Hotel(bData, cData, rData);
     customer = hotel.allCustomers[2];
     findBooking = hotel.retrieveCustomerBookings(customer);
+    sepRooms = findBooking.map(b =>  b.roomNum);
   });
 
   it('should be a new instance of Hotel', () => {
@@ -45,11 +46,11 @@ describe('Hotel', () => {
   });
 
   it('should be able to retrieve all a customers rooms', () => {
-    assert.deepEqual(findBooking, [rData[0]]);
+    assert.deepEqual(sepRooms, [rData[0]]);
   });
 
   it('should be able to retrieve the total spent on all rooms for a customer', () => {
-    const total = hotel.getTotalSpent(findBooking);
+    const total = hotel.getTotalSpent(sepRooms);
     assert.deepEqual(total, '358.40');
   });
 
@@ -60,6 +61,9 @@ describe('Hotel', () => {
     assert.deepEqual(filterRooms, rooms);
   });
 
-  it.skip('should be able to add a room to booked rooms', () => {
+  it('should be able to make a new booking object', () => {
+    const exObj = { "userID": 2, "date": '2023/03/23', "roomNumber": 13};
+    const roomObj = hotel.bookNewRoom(2, '2023/03/23', 13);
+    assert.deepEqual(roomObj, exObj);
   });
 });

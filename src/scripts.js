@@ -16,6 +16,7 @@ const loginPageDisplay  = document.getElementById('loginPage');
 const userDashboardDisplay = document.getElementById('userDashboard');
 const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
+const calendarBox = document.getElementById('calendarContainer');
 const userDetials = document.getElementById('userDetails');
 const roomDisplay = document.getElementById('roomDisp');
 const dateSelect = document.getElementById('date');
@@ -24,8 +25,7 @@ const roomTypesDropdown = document.getElementById('roomTypes');
 // buttons -------------------------------------------------------|
 const navBtnContainer = document.getElementById('navBtnConatiner');
 const showRoomsBtn = document.getElementById('showAvail');
-const bookingNavBar = document.getElementById('bookingBar');
-const filterRoomBtn = document.getElementById('filterBtn')
+const filterRoomBtn = document.getElementById('filterBtn');
 
 // GLOBAL VARIABLES ----------------------------------------------|
 let hotel, customers, customer, rooms, bookings, dateInput;
@@ -45,22 +45,20 @@ navBtnContainer.addEventListener('click', (e) => {
   }
 })
 
-showRoomsBtn.addEventListener('click', () => {
+calendarBox.addEventListener('click', (e) => {
   dateInput = dateSelect.value.replaceAll('-', '/');
-  console.log(dateInput)
-  showAllOpenRooms();
-})
-
-filterRoomBtn.addEventListener('click', () => {
-  dateInput = dateSelect.value.replaceAll('-', '/');
-  filterRooms();
-})
+  if(e.target.id === 'filterBtn') {
+    filterRooms();
+  } else if (e.target.id === 'showAvail') {
+    showAllOpenRooms();
+  }
+});
 
 roomDisplay.addEventListener('click', (e) => {
-  if(e.target.classList.contains('book-btn')){
+  if(e.target.classList.contains('book-btn')) {
     bookRoom(e);
   }
-})
+});
 
 // FUNCTIONS -----------------------------------------------------|
 const resolve = () => {
@@ -75,32 +73,34 @@ const resolve = () => {
   )
 }
 
-const displayCustomerDetails = (a, element, cust) => {
-  show([userDashboardDisplay])
-  userDetials.innerHTML = `<h2>${cust.name}'s Bookings</h2><p>Total Spent $<span>${hotel.getTotalSpent(a)}</span></p>`
-
-  for(let i = 0; i < a.length; i++) {
+const displayCustomerDetails = (arr, element, cust) => {
+  show([userDashboardDisplay]);
+  let getRooms = arr.map(a => a.roomNum);
+  let c = 0;
+  userDetials.innerHTML = `<h2>${cust.name}'s Bookings</h2><p>Total Spent $<span>${hotel.getTotalSpent(getRooms)}</span></p>`;
+  arr.forEach(a => {
     element.innerHTML += 
-    `<figure class="single-booking" tabindex="${i++}">
-      <img src="./images/${a[i].insertImagePath()}" alt="Image of ${a[i].type}">
+    `<figure class="single-booking" tabindex="${c++}">
+      <img src="./images/${a.roomNum.insertImagePath()}" alt="Image of ${a.roomNum.type}">
       <div class="single-details">
-        <h3>Room ${a[i].number} - ${a[i].type}</h3>
-        <p>$${a[i].cost}</p>
-        <p>Bidet? ${a[i].bidet}, ${a[i].beds} ${a[i].bedSize}</p>
+        <h3>Room ${a.roomNum.number} - ${a.roomNum.type}</h3>
+        <p>$${a.roomNum.cost}</p>
+        <p>Bidet? ${a.roomNum.bidet}, ${a.roomNum.beds} ${a.roomNum.bedSize}</p>
       </div>
       <figcaption class="booked-date">
-        <p> Booked On:</p>
+        <p> Booked On: ${a.date}</p>
       </figcaption>
     </figure>`;
-  }
+  });
 }
 
 const displayBookingDashboard = () => {
-  show([bookingPageDisplay]);
+  show([bookingPageDisplay, ]);
   hide([userDashboardDisplay]);
+  roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${customer.name}! Select a date and filter by room type on the left!</h3>`;
 }
 
-const showAllOpenRooms = (event) => {
+const showAllOpenRooms = () => {
   hotel.retrieveOpenRoomData(dateInput);
   const rooms = hotel.openRooms;
   roomDisplay.innerHTML = '';

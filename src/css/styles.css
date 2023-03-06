@@ -218,8 +218,14 @@ input, select, textarea{
 .calendar > input {
   color: black
 }
+
 .calendar:hover {
   cursor: pointer;
+}
+
+.calendar > select,
+.calendar > input {
+  margin: 5px;
 }
 
 .available-rooms-disp,
@@ -273,23 +279,6 @@ input, select, textarea{
 
 .no-rooms-msg {
 text-align: center;
-}
-
-/* Radio Filter Buttons ------------------------- */
-.radio {
-  display: flex;
-  flex-direction: column;
-  font-size: large;
-}
-
-.radio > h2 {
-  margin: 10px;
-  font-size: larger;
-}
-
-.filter-btn {
-  width: fit-content;
-  margin: 5px;
 }
 
 .hidden {

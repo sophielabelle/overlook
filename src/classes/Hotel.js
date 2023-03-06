@@ -13,19 +13,11 @@ class Hotel {
     this.openRooms = this.allRooms.filter(room => !this.bookedRoomsOnDate.includes(room.number));
   }
 
-  bookNewRoom(id, date, num) {
-    const postingObj = { "userID": id,
-    "date": date,
-    "roomNumber": num
-    }
-    return postingObj;
-  }
-
   retrieveCustomerBookings(customer) {
     const findBookings = this.allBookings.filter(booking => booking.userID === customer.id).reduce((acc, cur) => {
       this.allRooms.forEach(room => {
         if(room.number === cur.roomNumber) {
-          acc.push(room);
+          acc.push({roomNum: room, date: cur.date});
         }
       });
       return acc;
@@ -44,6 +36,14 @@ class Hotel {
   filterRoomType(type) {
     const filteredRooms = this.openRooms.filter(room => room.type === type);
     return filteredRooms;
+  }
+
+  bookNewRoom(id, date, num) {
+    const postingObj = { "userID": id,
+    "date": date,
+    "roomNumber": num
+    }
+    return postingObj;
   }
 }
 
