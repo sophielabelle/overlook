@@ -47,6 +47,7 @@ navBtnContainer.addEventListener('click', (e) => {
 
 showRoomsBtn.addEventListener('click', () => {
   dateInput = dateSelect.value.replaceAll('-', '/');
+  console.log(dateInput)
   showAllOpenRooms();
 })
 
@@ -103,7 +104,11 @@ const showAllOpenRooms = (event) => {
   hotel.retrieveOpenRoomData(dateInput);
   const rooms = hotel.openRooms;
   roomDisplay.innerHTML = '';
-  displayRooms(roomDisplay, rooms);
+  if(!dateInput) {
+    roomDisplay.innerHTML = `<h3 class="no-rooms-msg">It looks like no date was Selected! Please Select a date and try again.</h3>`;
+  } else {
+    displayRooms(roomDisplay, rooms);
+  }
 }
 
 const filterRooms = () => {
@@ -120,7 +125,7 @@ const filterRooms = () => {
 
 const displayRooms = (elem, arr) => {
   if (arr.length < 1) {
-    elem.innerHTML = `<h3 class="no-rooms-msg">Sorry there are no avaible rooms for this Date</h3>`;
+    elem.innerHTML = `<h3 class="no-rooms-msg">Sorry there are no avaible rooms for this Date! Please Select another.</h3>`;
   } else {
     arr.forEach(room => {
       elem.innerHTML += 
@@ -135,12 +140,15 @@ const displayRooms = (elem, arr) => {
 const bookRoom = (e) => {
   const id = parseInt(e.target.id.split('bookNow',)[1]);
   const newPosting = hotel.bookNewRoom(customer.id, dateInput, id);
-  console.log(newPosting)
   postData(newPosting);
-  // go into hotel class and use book method
+  const bookBtn = document.getElementById(`${e.target.id}`);
+  bookBtn.classList.add('unclickable');
+  bookBtn.innerText = `Room Booked on ${dateInput}!`;
 }
 
 
 // HELPER FUNCTIONS ----------------------------------------------| 
 const show = (arr) => arr.forEach(elem => elem.classList.remove('hidden'));
 const hide = (arr) => arr.forEach(elem => elem.classList.add('hidden'));
+
+export default resolve;
