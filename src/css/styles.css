@@ -269,7 +269,7 @@ input, select, textarea{
 .book-btn {
   background-color: #634f5e;
   margin-bottom: 5px;
-} 
+}
 
 .no-rooms-msg {
 text-align: center;
@@ -294,4 +294,9 @@ text-align: center;
 
 .hidden {
   display: none;
+}
+
+.unclickable {
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.534);
 }
