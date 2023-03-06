@@ -6,11 +6,17 @@ class Hotel {
     this.openRooms;
     this.bookedRoomsOnDate;
     this.newBookings;
+    this.currCustomer;
   }
 
   retrieveOpenRoomData(date) {
     this.bookedRoomsOnDate = this.allBookings.filter(booking => booking.date === date).map(b => b.roomNumber);
     this.openRooms = this.allRooms.filter(room => !this.bookedRoomsOnDate.includes(room.number));
+  }
+  
+  getCustomer(id) {
+    this.currCustomer = this.allCustomers.find(customer => customer.id === id);
+    return this.currCustomer;
   }
 
   retrieveCustomerBookings(customer) {
@@ -27,10 +33,10 @@ class Hotel {
 
   getTotalSpent(arr) {
     const cost = arr.reduce((acc, cur) => {
-      acc += cur.cost
-      return acc
+      acc += cur.cost;
+      return acc;
     }, 0);
-    return cost.toFixed(2)
+    return cost.toFixed(2);
   }
 
   filterRoomType(type) {
