@@ -16,6 +16,7 @@ const loginPageDisplay  = document.getElementById('loginPage');
 const userDashboardDisplay = document.getElementById('userDashboard');
 const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
+const calendarBox = document.getElementById('calendarContainer');
 const userDetials = document.getElementById('userDetails');
 const roomDisplay = document.getElementById('roomDisp');
 const dateSelect = document.getElementById('date');
@@ -44,21 +45,20 @@ navBtnContainer.addEventListener('click', (e) => {
   }
 })
 
-showRoomsBtn.addEventListener('click', () => {
+calendarBox.addEventListener('click', (e) => {
   dateInput = dateSelect.value.replaceAll('-', '/');
-  showAllOpenRooms();
-})
-
-filterRoomBtn.addEventListener('click', () => {
-  dateInput = dateSelect.value.replaceAll('-', '/');
-  filterRooms();
-})
+  if(e.target.id === 'filterBtn') {
+    filterRooms();
+  } else if (e.target.id === 'showAvail') {
+    showAllOpenRooms();
+  }
+});
 
 roomDisplay.addEventListener('click', (e) => {
   if(e.target.classList.contains('book-btn')) {
     bookRoom(e);
   }
-})
+});
 
 // FUNCTIONS -----------------------------------------------------|
 const resolve = () => {
@@ -97,9 +97,10 @@ const displayCustomerDetails = (arr, element, cust) => {
 const displayBookingDashboard = () => {
   show([bookingPageDisplay, ]);
   hide([userDashboardDisplay]);
+  roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${customer.name}! Select a date and filter by room type on the left!</h3>`;
 }
 
-const showAllOpenRooms = (event) => {
+const showAllOpenRooms = () => {
   hotel.retrieveOpenRoomData(dateInput);
   const rooms = hotel.openRooms;
   roomDisplay.innerHTML = '';

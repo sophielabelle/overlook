@@ -48,7 +48,7 @@
     </section>
     <section id="bookingDashboard">
       <section class="booking-bar" id="bookingBar">
-        <div class="calendar">
+        <div class="calendar" id="calendarContainer">
           <h2>Room Types:</h2>
           <input type="date" id="date" name="booking-date" min="2022-01-01" max="2050-01-01">
           <label for="date">
@@ -61,7 +61,7 @@
             <option value="suite">Suite</option>
             <option value="single-room">Single Room</option>
           </select>
-          <button class="filter-btn nav-btn nav-btns" id="filterBtn">Filter</button>
+          <button class="filter-btn nav-btn nav-btns" id="filterBtn">Filter<span class="material-symbols-outlined">filter_list</span></button>
         </div>
       </section>
       <section class="available-rooms-disp">
