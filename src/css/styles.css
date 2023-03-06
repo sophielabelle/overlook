@@ -133,6 +133,15 @@ input, select, textarea{
   color: rgba(0,0,0,.8);
 } 
 
+.err-msg {
+  width: 215px;
+  text-align: center;
+  background-color: rgba(255, 7, 7, 0.121);
+  border: 2px solid red;
+  font-size: larger;
+  color: black;
+}
+
 /* Basic Modal Styles -------------------------------- */
 .modal {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;

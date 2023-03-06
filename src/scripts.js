@@ -37,9 +37,13 @@ let hotel, customers, rooms, bookings, dateInput, curCustID;
 
 // EVENT LISTENERS -----------------------------------------------|
 window.addEventListener('load', () => {
-  MicroModal.show('modal-1');
+  showModal();
   resolve();
 })
+
+const showModal = () => {
+  MicroModal.show('modal-1');
+}
 
 navBtnContainer.addEventListener('click', (e) => {
   if (e.target.id === 'bookingsBtn') {
@@ -71,9 +75,16 @@ submitBtn.addEventListener('click', (event) => {
   const password = loginForm.psw.value;
 //   username: customer50 (where 50 is the ID of the user)
 // password: overlook2021
-  if(password === 'overlook2021') {
+  const correctPass = password === 'overlook2021';
+  if(correctPass && username.includes('customer')) {
     const userId = parseInt(username.split('customer')[1]);
     loginUser(userId);
+  } else if(!correctPass && username.includes('customer')){
+    loginErrorMsg.innerText = 'Please try again your PASSWORD is incorrect!';
+    loginErrorMsg.classList.add('err-msg')
+  } else if(correctPass && !username.includes('customer')) {
+    loginErrorMsg.innerText = 'Please try again your USERNAME is incorrect!';
+    loginErrorMsg.classList.add('err-msg')
   }
 });
 
