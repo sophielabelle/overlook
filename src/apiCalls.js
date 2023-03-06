@@ -1,4 +1,4 @@
-import resolve from "./scripts";
+import {resolve, handleErrors} from "./scripts";
 
 const fetchData = (info) => {
   return fetch(`http://localhost:3001/api/v1/${info}`)
@@ -9,17 +9,25 @@ const fetchData = (info) => {
       throw new Error('Error');
     }
   })
-  .catch(error => console.log(`Issue at: ${error}`))
+  .catch(err => {
+    handleErrors(err)
+    console.log(err)
+  })
 }
 
 const resolveData = () => {
   return Promise.all([
     fetchData('customers'), fetchData('rooms'), fetchData('bookings')
   ])
-  .catch(err => console.log('in resolve',err));
+  .catch(err => {
+    handleErrors(err)
+    console.log(err)
+  });
 }
 
 const postData = (saveData) => {
+  console.log(saveData)
+  saveData.userID = 'fasdf'
   console.log(saveData)
   fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
@@ -35,7 +43,10 @@ const postData = (saveData) => {
       resolve();
     }
   })
-  .catch(err => console.log('Error at:', err));
+  .catch(err => {
+    handleErrors(err);
+    console.log(err);
+  });
 }
 
 export {resolveData, postData};

@@ -31,6 +31,7 @@ const filterRoomBtn = document.getElementById('filterBtn');
 const loginForm = document.getElementById('loginForm');
 const submitBtn = document.getElementById('submit');
 const loginErrorMsg = document.getElementById('errMsg');
+const apiError = document.getElementById('apiErrors');
 
 // GLOBAL VARIABLES ----------------------------------------------|
 let hotel, customers, rooms, bookings, dateInput, curCustID;
@@ -110,6 +111,12 @@ const resolve = () => {
   )
 }
 
+const handleErrors = (error) => {
+  MicroModal.close('modal-1')
+  apiError.innerHTML = `<h2>I'm Sorry but it seems there is an error with your request. Please Reload the page! ${error}.</h2>`;
+  hide([userDashboardDisplay, bookingPageDisplay, navBtnContainer]);
+}
+
 const displayCustomerDetails = (arr, element, cust) => {
   show([userDashboardDisplay]);
   let getRooms = arr.map(a => a.roomNum);
@@ -132,7 +139,7 @@ const displayCustomerDetails = (arr, element, cust) => {
 }
 
 const displayBookingDashboard = () => {
-  show([bookingPageDisplay, ]);
+  show([bookingPageDisplay]);
   hide([userDashboardDisplay]);
   roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${hotel.currCustomer.name}! Select a date and filter by room type on the left!</h3>`;
 }
@@ -188,4 +195,4 @@ const bookNewRoom = (e) => {
 const show = (arr) => arr.forEach(elem => elem.classList.remove('hidden'));
 const hide = (arr) => arr.forEach(elem => elem.classList.add('hidden'));
 
-export default resolve;
+export {resolve, handleErrors};

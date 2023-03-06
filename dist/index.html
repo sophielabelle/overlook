@@ -31,9 +31,9 @@
         <section class="modal-content" id="modal-1-content">
           <form class=" log-in-container modal-content animate" action="/action_page.php" id="loginForm">
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <input type="text" placeholder="Enter Username" name="username" autocomplete="username" required>
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" autocomplete="current-password" required>
             <button class="nav-btn" type="submit" id="submit">Login</button>
           </form>
           <div id="errMsg"></div>
@@ -42,6 +42,7 @@
     </div>
   </div>
   <main>
+    <section class="api-issue-error" id="apiErrors"></section>
     <section class="user-dashboard" id="userDashboard">
       <div class="user-details" id="userDetails"></div> 
       <section class="user-bookings" id="userBookings"></section>
