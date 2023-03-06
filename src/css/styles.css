@@ -168,8 +168,17 @@ input, select, textarea{
   width: 100%;
 }
 
-.single-booking > h2,
-.single-booking > p {
+.single-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+}
+
+.single-details > h2,
+.single-details > p {
   margin: 0;
 }
 
@@ -260,7 +269,11 @@ input, select, textarea{
 .book-btn {
   background-color: #634f5e;
   margin-bottom: 5px;
-} 
+}
+
+.no-rooms-msg {
+text-align: center;
+}
 
 /* Radio Filter Buttons ------------------------- */
 .radio {
@@ -283,3 +296,7 @@ input, select, textarea{
   display: none;
 }
 
+.unclickable {
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.534);
+}

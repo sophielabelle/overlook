@@ -1,3 +1,5 @@
+import resolve from "./scripts";
+
 const fetchData = (info) => {
   return fetch(`http://localhost:3001/api/v1/${info}`)
   .then(res => {
@@ -18,9 +20,10 @@ const resolveData = () => {
 }
 
 const postData = (saveData) => {
+  console.log(saveData)
   fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
-    body: JSON.stringify(savedRecipes),
+    body: JSON.stringify(saveData),
     headers: {
       'Content-Type': 'application/json'
     }  
@@ -28,10 +31,11 @@ const postData = (saveData) => {
   .then(response => {
     if(!response.ok) {
       throw new Error(response.status);
+    } else {
+      resolve();
     }
-    return response.json();
   })
-  .catch(err => console.log(`Issue at: ${err}`));
+  .catch(err => console.log('Error at:', err));
 }
 
 export {resolveData, postData};
