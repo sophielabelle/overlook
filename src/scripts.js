@@ -27,8 +27,13 @@ const navBtnContainer = document.getElementById('navBtnConatiner');
 const showRoomsBtn = document.getElementById('showAvail');
 const filterRoomBtn = document.getElementById('filterBtn');
 
+// LOGIN ---------------------------------------------------------|
+const loginForm = document.getElementById('loginForm');
+const submitBtn = document.getElementById('submit');
+const loginErrorMsg = document.getElementById('errMsg');
+
 // GLOBAL VARIABLES ----------------------------------------------|
-let hotel, customers, customer, rooms, bookings, dateInput;
+let hotel, customers, rooms, bookings, dateInput, curCustID;
 
 // EVENT LISTENERS -----------------------------------------------|
 window.addEventListener('load', () => {
@@ -38,8 +43,8 @@ window.addEventListener('load', () => {
 
 navBtnContainer.addEventListener('click', (e) => {
   if (e.target.id === 'bookingsBtn') {
-    const findBookings = hotel.retrieveCustomerBookings(customer);
-    displayCustomerDetails(findBookings, userBookingDisplay, customer);
+    const findBookings = hotel.retrieveCustomerBookings(hotel.currCustomer);
+    displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
   } else {
     displayBookingDashboard();
   }
@@ -56,19 +61,40 @@ calendarBox.addEventListener('click', (e) => {
 
 roomDisplay.addEventListener('click', (e) => {
   if(e.target.classList.contains('book-btn')) {
-    bookRoom(e);
+    bookNewRoom(e);
+  }
+});
+
+submitBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const username = loginForm.username.value;
+  const password = loginForm.psw.value;
+//   username: customer50 (where 50 is the ID of the user)
+// password: overlook2021
+  if(password === 'overlook2021') {
+    const userId = parseInt(username.split('customer')[1]);
+    loginUser(userId);
   }
 });
 
 // FUNCTIONS -----------------------------------------------------|
+const loginUser = (id) => {
+  hotel.getCustomer(id);
+  curCustID = hotel.currCustomer.id;
+  hotel.retrieveCustomerBookings(hotel.currCustomer);
+  MicroModal.close('modal-1');
+  const findBookings = hotel.retrieveCustomerBookings(hotel.currCustomer);
+    displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
+}
+
 const resolve = () => {
   resolveData().then(
     data => {
       customers = data[0].customers.map(c => new Customer(c));
-      customer = customers[0];
       rooms = data[1].rooms.map(r => new Room(r));
       bookings = data[2].bookings.map(b => new Booking(b));
       hotel = new Hotel(bookings, customers, rooms);
+      hotel.getCustomer(curCustID);
     }
   )
 }
@@ -97,7 +123,7 @@ const displayCustomerDetails = (arr, element, cust) => {
 const displayBookingDashboard = () => {
   show([bookingPageDisplay, ]);
   hide([userDashboardDisplay]);
-  roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${customer.name}! Select a date and filter by room type on the left!</h3>`;
+  roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${hotel.currCustomer.name}! Select a date and filter by room type on the left!</h3>`;
 }
 
 const showAllOpenRooms = () => {
@@ -107,7 +133,7 @@ const showAllOpenRooms = () => {
   if(!dateInput) {
     roomDisplay.innerHTML = `<h3 class="no-rooms-msg">It looks like no date was Selected! Please Select a date and try again.</h3>`;
   } else {
-    displayRooms(roomDisplay, rooms);
+    displayAvailRooms(roomDisplay, rooms);
   }
 }
 
@@ -119,11 +145,11 @@ const filterRooms = () => {
   if (filterType === 'Select Room') {
     roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Please Select a Room Type to Filter!</h3>`;
   } else {
-    displayRooms(roomDisplay, filteredRooms);
+    displayAvailRooms(roomDisplay, filteredRooms);
   }
 }
 
-const displayRooms = (elem, arr) => {
+const displayAvailRooms = (elem, arr) => {
   if (arr.length < 1) {
     elem.innerHTML = `<h3 class="no-rooms-msg">Sorry there are no avaible rooms for this Date! Please Select another.</h3>`;
   } else {
@@ -137,9 +163,9 @@ const displayRooms = (elem, arr) => {
   }
 }
 
-const bookRoom = (e) => {
+const bookNewRoom = (e) => {
   const id = parseInt(e.target.id.split('bookNow',)[1]);
-  const newPosting = hotel.bookNewRoom(customer.id, dateInput, id);
+  const newPosting = hotel.bookNewRoom(hotel.currCustomer.id, dateInput, id);
   postData(newPosting);
   const bookBtn = document.getElementById(`${e.target.id}`);
   bookBtn.classList.add('unclickable');
