@@ -10,7 +10,7 @@
 <body>
   <header>
     <nav>
-      <h1>Hotel de Las Flores</h1>
+      <h1 class="main-header" >Hotel de Las Flores</h1>
       <div class="nav-conatiner" id="navBtnConatiner">
         <div class="nav-btns">
           <button class="nav-btn nav-btns" id="bookingsBtn"><span class="material-symbols-outlined">account_circle</span>MY BOOKINGS</button>
@@ -22,10 +22,11 @@
     </nav>
   </header>
   <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-    <div class="modal-overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal-overlay" tabindex="-1">
       <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
         <header class="modal-header">
-          <h2 class="modal-title" id="modal-1-title">Welcome! Please Log In</h2>
+          <h1 class="modal-title" id="modal-1-title">Welcome to the Hotel de Las Flores!</h1>
+          <h2>Please Log In</h2>
         </header>
         <section class="modal-content" id="modal-1-content">
           <form class=" log-in-container modal-content animate" action="/action_page.php" id="loginForm">
@@ -33,7 +34,7 @@
             <input type="text" placeholder="Enter Username" name="username" required>
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-            <button class="nav-btn" type="submit" id="submit">Login</button>
+            <button class="nav-btn" type="submit" id="submit" data-micromodal-close>Login</button>
           </form>
         </section>
       </div>

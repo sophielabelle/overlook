@@ -28,7 +28,7 @@ nav {
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.692);
 }
 
-h1 {
+.main-header {
   margin: 10px;
   position: absolute;
   top: 0;
@@ -38,6 +38,7 @@ h1 {
 
 .nav-btns {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -92,6 +93,12 @@ button {
   border-radius: 5px;
 }
 
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .modal-title {
   color: #ffffff;
   font-size: 2em;
@@ -107,8 +114,9 @@ input, select, textarea{
   flex-direction: column;
 }
 
-.log-in-container > label > b{
-  font-size: larger;
+.log-in-container > label > b,
+.log-in-container > input {
+  font-size: 1.15em;
 }
 
 .modal-close {
@@ -119,7 +127,7 @@ input, select, textarea{
 .modal-header .modal-close:before { content: "\2715"; }
 
 .modal-content {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   line-height: 1.5;
   color: rgba(0,0,0,.8);
