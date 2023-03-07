@@ -46,4 +46,9 @@ describe('Room', () => {
     assert.equal(room1.cost, 358.4);
     assert.equal(room2.cost, 477.38);
   });
+
+  it('should take a type and return the endpath of an image', () => {
+    assert.equal(room1.insertImagePath(), 'residential-suite.png');
+    assert.equal(room2.insertImagePath(), 'suite.png');
+  });
 });
