@@ -40,13 +40,16 @@ describe('Hotel', () => {
     hotel.retrieveOpenRoomData("2022/01/24")
     const rooms = [2,1];
     assert.deepEqual(hotel.bookedRoomsOnDate, rooms);
-
     const availRooms = [rData[2], rData[3]];
     assert.deepEqual(hotel.openRooms, availRooms);
   });
 
   it('should be able to retrieve all a customers rooms', () => {
     assert.deepEqual(sepRooms, [rData[0]]);
+  });
+
+  it('should be able to retrieve a single customer from an ID', () => {
+    assert.deepEqual(hotel.getCustomer(2), hotel.allCustomers[1]);
   });
 
   it('should be able to retrieve the total spent on all rooms for a customer', () => {

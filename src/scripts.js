@@ -12,7 +12,6 @@ import Booking from './classes/Booking';
 import Hotel from './classes/Hotel';
 
 // QUERRY SELECTORS ----------------------------------------------|
-const loginPageDisplay  = document.getElementById('loginPage');
 const userDashboardDisplay = document.getElementById('userDashboard');
 const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
@@ -21,25 +20,24 @@ const userDetials = document.getElementById('userDetails');
 const roomDisplay = document.getElementById('roomDisp');
 const dateSelect = document.getElementById('date');
 const roomTypesDropdown = document.getElementById('roomTypes');
-
-// buttons -------------------------------------------------------|
 const navBtnContainer = document.getElementById('navBtnConatiner');
-const showRoomsBtn = document.getElementById('showAvail');
-const filterRoomBtn = document.getElementById('filterBtn');
 
 // LOGIN ---------------------------------------------------------|
 const loginForm = document.getElementById('loginForm');
 const submitBtn = document.getElementById('submit');
 const loginErrorMsg = document.getElementById('errMsg');
+const apiError = document.getElementById('apiErrors');
 
 // GLOBAL VARIABLES ----------------------------------------------|
 let hotel, customers, rooms, bookings, dateInput, curCustID;
 
 // EVENT LISTENERS -----------------------------------------------|
 window.addEventListener('load', () => {
-  MicroModal.show('modal-1');
+  showModal();
   resolve();
-})
+  dateSelect.setAttribute('value', formatDate(new Date()));
+  dateSelect.setAttribute('min', formatDate(new Date()));
+});
 
 navBtnContainer.addEventListener('click', (e) => {
   if (e.target.id === 'bookingsBtn') {
@@ -48,7 +46,7 @@ navBtnContainer.addEventListener('click', (e) => {
   } else {
     displayBookingDashboard();
   }
-})
+});
 
 calendarBox.addEventListener('click', (e) => {
   dateInput = dateSelect.value.replaceAll('-', '/');
@@ -69,11 +67,19 @@ submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const username = loginForm.username.value;
   const password = loginForm.psw.value;
-//   username: customer50 (where 50 is the ID of the user)
-// password: overlook2021
-  if(password === 'overlook2021') {
+  const correctPass = password === 'overlook2021';
+  if(correctPass && username.includes('customer')) {
     const userId = parseInt(username.split('customer')[1]);
     loginUser(userId);
+  } else if(!correctPass && username.includes('customer')){
+    loginErrorMsg.innerText = 'Please try again your PASSWORD is incorrect!';
+    loginErrorMsg.classList.add('err-msg');
+  } else if(correctPass && !username.includes('customer')) {
+    loginErrorMsg.innerText = 'Please try again your USERNAME is incorrect!';
+    loginErrorMsg.classList.add('err-msg');
+  } else if (!correctPass && !username.includes('customer')) {
+    loginErrorMsg.innerText = 'Please fill in all feilds!';
+    loginErrorMsg.classList.add('err-msg');
   }
 });
 
@@ -84,7 +90,7 @@ const loginUser = (id) => {
   hotel.retrieveCustomerBookings(hotel.currCustomer);
   MicroModal.close('modal-1');
   const findBookings = hotel.retrieveCustomerBookings(hotel.currCustomer);
-    displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
+  displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
 }
 
 const resolve = () => {
@@ -96,7 +102,13 @@ const resolve = () => {
       hotel = new Hotel(bookings, customers, rooms);
       hotel.getCustomer(curCustID);
     }
-  )
+  );
+}
+
+const handleErrors = (error) => {
+  MicroModal.close('modal-1')
+  apiError.innerHTML = `<h2>I'm Sorry but it seems there is an error with your request. Please Reload the page! ${error}.</h2>`;
+  hide([userDashboardDisplay, bookingPageDisplay, navBtnContainer]);
 }
 
 const displayCustomerDetails = (arr, element, cust) => {
@@ -121,7 +133,7 @@ const displayCustomerDetails = (arr, element, cust) => {
 }
 
 const displayBookingDashboard = () => {
-  show([bookingPageDisplay, ]);
+  show([bookingPageDisplay]);
   hide([userDashboardDisplay]);
   roomDisplay.innerHTML = `<h3 class="no-rooms-msg">Hello ${hotel.currCustomer.name}! Select a date and filter by room type on the left!</h3>`;
 }
@@ -172,9 +184,17 @@ const bookNewRoom = (e) => {
   bookBtn.innerText = `Room Booked on ${dateInput}!`;
 }
 
+// HELPER FUNCTIONS ----------------------------------------------|
+const formatDate = (date) => {
+  const year = date.toLocaleString('default', {year: 'numeric'});
+  const month = date.toLocaleString('default', {month: '2-digit'});
+  const day = date.toLocaleString('default', {day: '2-digit'});
+  const defalDate = `${year}-${month}-${day}`;
+  return defalDate;
+}
 
-// HELPER FUNCTIONS ----------------------------------------------| 
+const showModal = () => MicroModal.show('modal-1'); 
 const show = (arr) => arr.forEach(elem => elem.classList.remove('hidden'));
 const hide = (arr) => arr.forEach(elem => elem.classList.add('hidden'));
 
-export default resolve;
+export {resolve, handleErrors};
