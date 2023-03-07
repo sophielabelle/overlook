@@ -6,7 +6,7 @@
 
 ## App Preview
 [//]: <>
-(https://user-images.githubusercontent.com/117314181/223338973-c9e03b38-c53c-44e1-a236-b9ad4ab996c9.mov)
+[Overlook Hotel](https://user-images.githubusercontent.com/117314181/223338973-c9e03b38-c53c-44e1-a236-b9ad4ab996c9.mov)
 
 
 ## Challenges
