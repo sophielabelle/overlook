@@ -118,7 +118,7 @@ const displayCustomerDetails = (arr, element, cust) => {
   userDetials.innerHTML = `<h2>${cust.name}'s Bookings</h2><p>Total Spent $<span>${hotel.getTotalSpent(getRooms)}</span></p>`;
   arr.forEach(a => {
     element.innerHTML += 
-    `<figure class="single-booking" tabindex="${c++}">
+    `<figure class="single-booking" tabindex="0">
       <img src="./images/${a.roomNum.insertImagePath()}" alt="Image of ${a.roomNum.type}">
       <div class="single-details">
         <h3>Room ${a.roomNum.number} - ${a.roomNum.type}</h3>

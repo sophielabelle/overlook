@@ -20,7 +20,8 @@ class Hotel {
   }
 
   retrieveCustomerBookings(customer) {
-    const findBookings = this.allBookings.filter(booking => booking.userID === customer.id).reduce((acc, cur) => {
+    const sortByDate = this.allBookings.sort((a, b) => (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0);
+    const findBookings = sortByDate.filter(booking => booking.userID === customer.id).reduce((acc, cur) => {
       this.allRooms.forEach(room => {
         if(room.number === cur.roomNumber) {
           acc.push({roomNum: room, date: cur.date});
