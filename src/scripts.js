@@ -35,6 +35,7 @@ let hotel, customers, rooms, bookings, dateInput, curCustID;
 window.addEventListener('load', () => {
   showModal();
   resolve();
+  dateSelect.setAttribute('value', formatDate(new Date()));
 });
 
 navBtnContainer.addEventListener('click', (e) => {
@@ -88,7 +89,7 @@ const loginUser = (id) => {
   hotel.retrieveCustomerBookings(hotel.currCustomer);
   MicroModal.close('modal-1');
   const findBookings = hotel.retrieveCustomerBookings(hotel.currCustomer);
-    displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
+  displayCustomerDetails(findBookings, userBookingDisplay, hotel.currCustomer);
 }
 
 const resolve = () => {
@@ -101,10 +102,6 @@ const resolve = () => {
       hotel.getCustomer(curCustID);
     }
   );
-}
-
-const showModal = () => {
-  MicroModal.show('modal-1');
 }
 
 const handleErrors = (error) => {
@@ -186,8 +183,16 @@ const bookNewRoom = (e) => {
   bookBtn.innerText = `Room Booked on ${dateInput}!`;
 }
 
+// HELPER FUNCTIONS ----------------------------------------------|
+const formatDate = (date) => {
+  const year = date.toLocaleString('default', {year: 'numeric'});
+  const month = date.toLocaleString('default', {month: '2-digit'});
+  const day = date.toLocaleString('default', {day: '2-digit'});
+  const defDate = `${year}-${month}-${day}`;
+  return defDate;
+}
 
-// HELPER FUNCTIONS ----------------------------------------------| 
+const showModal = () => MicroModal.show('modal-1'); 
 const show = (arr) => arr.forEach(elem => elem.classList.remove('hidden'));
 const hide = (arr) => arr.forEach(elem => elem.classList.add('hidden'));
 
