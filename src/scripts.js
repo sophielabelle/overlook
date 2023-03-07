@@ -36,6 +36,7 @@ window.addEventListener('load', () => {
   showModal();
   resolve();
   dateSelect.setAttribute('value', formatDate(new Date()));
+  dateSelect.setAttribute('min', formatDate(new Date()));
 });
 
 navBtnContainer.addEventListener('click', (e) => {
@@ -188,8 +189,8 @@ const formatDate = (date) => {
   const year = date.toLocaleString('default', {year: 'numeric'});
   const month = date.toLocaleString('default', {month: '2-digit'});
   const day = date.toLocaleString('default', {day: '2-digit'});
-  const defDate = `${year}-${month}-${day}`;
-  return defDate;
+  const defalDate = `${year}-${month}-${day}`;
+  return defalDate;
 }
 
 const showModal = () => MicroModal.show('modal-1'); 
