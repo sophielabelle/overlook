@@ -12,7 +12,6 @@ import Booking from './classes/Booking';
 import Hotel from './classes/Hotel';
 
 // QUERRY SELECTORS ----------------------------------------------|
-const loginPageDisplay  = document.getElementById('loginPage');
 const userDashboardDisplay = document.getElementById('userDashboard');
 const userBookingDisplay = document.getElementById('userBookings');
 const bookingPageDisplay = document.getElementById('bookingDashboard');
@@ -21,11 +20,7 @@ const userDetials = document.getElementById('userDetails');
 const roomDisplay = document.getElementById('roomDisp');
 const dateSelect = document.getElementById('date');
 const roomTypesDropdown = document.getElementById('roomTypes');
-
-// buttons -------------------------------------------------------|
 const navBtnContainer = document.getElementById('navBtnConatiner');
-const showRoomsBtn = document.getElementById('showAvail');
-const filterRoomBtn = document.getElementById('filterBtn');
 
 // LOGIN ---------------------------------------------------------|
 const loginForm = document.getElementById('loginForm');
@@ -40,11 +35,7 @@ let hotel, customers, rooms, bookings, dateInput, curCustID;
 window.addEventListener('load', () => {
   showModal();
   resolve();
-})
-
-const showModal = () => {
-  MicroModal.show('modal-1');
-}
+});
 
 navBtnContainer.addEventListener('click', (e) => {
   if (e.target.id === 'bookingsBtn') {
@@ -53,7 +44,7 @@ navBtnContainer.addEventListener('click', (e) => {
   } else {
     displayBookingDashboard();
   }
-})
+});
 
 calendarBox.addEventListener('click', (e) => {
   dateInput = dateSelect.value.replaceAll('-', '/');
@@ -74,18 +65,19 @@ submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const username = loginForm.username.value;
   const password = loginForm.psw.value;
-//   username: customer50 (where 50 is the ID of the user)
-// password: overlook2021
   const correctPass = password === 'overlook2021';
   if(correctPass && username.includes('customer')) {
     const userId = parseInt(username.split('customer')[1]);
     loginUser(userId);
   } else if(!correctPass && username.includes('customer')){
     loginErrorMsg.innerText = 'Please try again your PASSWORD is incorrect!';
-    loginErrorMsg.classList.add('err-msg')
+    loginErrorMsg.classList.add('err-msg');
   } else if(correctPass && !username.includes('customer')) {
     loginErrorMsg.innerText = 'Please try again your USERNAME is incorrect!';
-    loginErrorMsg.classList.add('err-msg')
+    loginErrorMsg.classList.add('err-msg');
+  } else if (!correctPass && !username.includes('customer')) {
+    loginErrorMsg.innerText = 'Please fill in all feilds!';
+    loginErrorMsg.classList.add('err-msg');
   }
 });
 
@@ -108,7 +100,11 @@ const resolve = () => {
       hotel = new Hotel(bookings, customers, rooms);
       hotel.getCustomer(curCustID);
     }
-  )
+  );
+}
+
+const showModal = () => {
+  MicroModal.show('modal-1');
 }
 
 const handleErrors = (error) => {
